@@ -146,7 +146,7 @@ with tab1:
     cols = st.columns(6)
     for i, url in enumerate(PRESET_IMAGES):
         with cols[i]:
-            if st.button(f"被験者 {chr(65+i)}", key=f"btn_{i}", use_container_width=True):
+            if st.button(f"被験者 {chr(65+i)}", key=f"btn_{i}", width="stretch"):
                 st.session_state.input_mode = "preset"
                 st.session_state.current_target = url
                 st.session_state.scan_results = None
@@ -167,7 +167,7 @@ with tab3:
         st.session_state.current_target = uploaded_file.read()
 
 st.write("")
-trigger_scan = st.button("🚀 選択した画像でスキャン開始（属性判定）", use_container_width=True)
+trigger_scan = st.button("🚀 選択した画像でスキャン開始（属性判定）", width="stretch")
 
 if trigger_scan:
     if not API_KEY or not FILE_API_URL or not TASK_API_URL:
@@ -196,9 +196,9 @@ col_left, col_right = st.columns([4, 6])
 
 with col_left:
     if st.session_state.input_mode == "upload":
-        st.image(st.session_state.current_target, caption="📷 持ち込み顔写真（ローカル）", use_container_width=True)
+        st.image(st.session_state.current_target, caption="📷 持ち込み顔写真（ローカル）", width="stretch")
     else:
-        st.image(st.session_state.current_target, caption="📷 登録顔写真（URL指定）", use_container_width=True)
+        st.image(st.session_state.current_target, caption="📷 登録顔写真（URL指定）", width="stretch")
 
 with col_right:
     if st.session_state.scan_results:
